@@ -1,23 +1,23 @@
+const hours = [
+  "8 AM",
+  "9 AM",
+  "10 AM",
+  "11 AM",
+  "12 PM",
+  "1 PM",
+  "2 PM",
+  "3 PM",
+  "4 PM",
+  "5 PM",
+];
+
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
 export default function CalendarPage() {
-  const hours = [
-    "8 AM",
-    "9 AM",
-    "10 AM",
-    "11 AM",
-    "12 PM",
-    "1 PM",
-    "2 PM",
-    "3 PM",
-    "4 PM",
-    "5 PM",
-  ];
-
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <div className="flex min-h-screen">
-        <aside className="w-64 border-r border-slate-800 bg-slate-900 p-5">
+        <aside className="w-72 border-r border-slate-800 bg-slate-900 p-5">
           <h1 className="text-2xl font-semibold">DeniCal</h1>
           <p className="mt-1 text-sm text-slate-400">
             Plan clearly. Follow through gently.
@@ -45,24 +45,29 @@ export default function CalendarPage() {
           </nav>
 
           <div className="mt-10">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-              Tasks
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+                Task Inbox
+              </h2>
+              <button className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800">
+                + Add
+              </button>
+            </div>
 
             <div className="mt-4 space-y-3">
               <div className="rounded-xl border border-slate-700 bg-slate-950 p-3">
                 <p className="font-medium">Write proposal</p>
-                <p className="text-sm text-slate-400">30 min</p>
+                <p className="text-sm text-slate-400">30 min · High focus</p>
               </div>
 
               <div className="rounded-xl border border-slate-700 bg-slate-950 p-3">
                 <p className="font-medium">Reply to emails</p>
-                <p className="text-sm text-slate-400">15 min</p>
+                <p className="text-sm text-slate-400">15 min · Low focus</p>
               </div>
 
               <div className="rounded-xl border border-slate-700 bg-slate-950 p-3">
                 <p className="font-medium">Plan tomorrow</p>
-                <p className="text-sm text-slate-400">10 min</p>
+                <p className="text-sm text-slate-400">10 min · Low focus</p>
               </div>
             </div>
           </div>
@@ -77,9 +82,14 @@ export default function CalendarPage() {
               <h2 className="mt-1 text-3xl font-semibold">Weekly Planner</h2>
             </div>
 
-            <button className="rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-950">
-              + Add Task
-            </button>
+            <div className="flex gap-3">
+              <button className="rounded-xl border border-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-900">
+                Day
+              </button>
+              <button className="rounded-xl bg-white px-4 py-2 text-sm font-medium text-slate-950">
+                Week
+              </button>
+            </div>
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
@@ -99,7 +109,10 @@ export default function CalendarPage() {
             </div>
 
             {hours.map((hour) => (
-              <div key={hour} className="grid min-h-20 grid-cols-6 border-b border-slate-800 last:border-b-0">
+              <div
+                key={hour}
+                className="grid min-h-24 grid-cols-6 border-b border-slate-800 last:border-b-0"
+              >
                 <div className="border-r border-slate-800 p-3 text-sm text-slate-400">
                   {hour}
                 </div>
@@ -132,6 +145,30 @@ export default function CalendarPage() {
             ))}
           </div>
         </section>
+
+        <aside className="w-80 border-l border-slate-800 bg-slate-900 p-5">
+          <h2 className="text-lg font-semibold">Details</h2>
+          <p className="mt-2 text-sm text-slate-400">
+            This panel will show task details, event details, and planning
+            actions.
+          </p>
+
+          <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-950 p-4">
+            <p className="text-sm text-slate-400">Selected block</p>
+            <h3 className="mt-2 text-lg font-semibold">Deep work block</h3>
+            <p className="mt-2 text-sm text-slate-300">
+              Thursday · 2:00 PM to 3:00 PM
+            </p>
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-4">
+            <p className="text-sm text-slate-400">Next step</p>
+            <p className="mt-2 text-sm text-slate-300">
+              Soon this area will let you schedule tasks directly into the
+              calendar.
+            </p>
+          </div>
+        </aside>
       </div>
     </main>
   );
